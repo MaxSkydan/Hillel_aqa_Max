@@ -4,11 +4,13 @@ anakin = 'Hello There'
 print(anakin)
 print(id(anakin))
 
-darthvader = anakin
-print(darthvader)
-print(id(darthvader))
+darth_vader = anakin
+print(darth_vader)
+print(id(darth_vader))
 
 del anakin
 
-print(darthvader)
-print(id(darthvader))
+print(darth_vader)
+print(id(darth_vader))
+
+del darth_vader
