@@ -27,7 +27,7 @@ logging.info(text_f_string)
 
 # another f-string
 var1, var2, var3 = 'ø', 'å', 'Æ'
-text_f_string = f"""Automatisering akselererer {var1}yeblikket da roboter vil erobre planeten v{var2}r. ({var3})"""
+text_f_string = f'Automatisering akselererer {var1}yeblikket da roboter vil erobre planeten v{var2}r. ({var3})'
 logging.info(text_f_string)
 # f-string with variables name
 text_f_string = f"""Automatisering akselererer {var1=}yeblikket da roboter vil erobre planeten v{var2=}r. ({var3=})"""
