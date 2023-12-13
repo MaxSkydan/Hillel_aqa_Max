@@ -28,16 +28,18 @@ And twinkle on the Milky Way,
 They stretched in never-ending line
 Along the margin of a bay:
 Ten thousand saw I at a glance,
-Tossing their heads in sprightly dance."""
+Tossing their heads in sprightly dance.
+"""
 
 """
-We count the vowels in the text and put them in the dictionary.
+We change all text to lowercase
+and we count the vowels in the text and put them in the dictionary.
 And after that we display a table with the counted vowels.
 """
 
-vowels = {'A': poem_text.count('a'), 'E': poem_text.count('e'),
-          'I': poem_text.count('i'), 'O': poem_text.count('o'),
-          'U': poem_text.count('u'),
+vowels = {'A': poem_text.lower().count('a'), 'E': poem_text.lower().count('e'),
+          'I': poem_text.lower().count('i'), 'O': poem_text.lower().count('o'),
+          'U': poem_text.lower().count('u'),
           }
 
 sep_num = 21
