@@ -33,11 +33,9 @@ Ten thousand saw I at a glance,
 Tossing their heads in sprightly dance.
 """
 
-"""
-We change all text to lowercase.
-After we count the vowels in the text and put them in the dictionary.
-And after that we display a table with the counted vowels.
-"""
+# We change all text to lowercase.
+# After we count the vowels in the text and put them in the dictionary.
+# And after that we display a table with the counted vowels.
 
 lower_text = poem_text.lower()
 
@@ -54,10 +52,9 @@ for vowel, count in vowels.items():
     print(f'| {vowel:^6}|  {count:^8} |')
 print('-' * sep_num)
 
-"""
-We modify the text in which each vowel is replaced.
-And after that we display this changed text.
-"""
+
+# We modify the text in which each vowel is replaced.
+# And after that we display this changed text.
 
 modify = str.maketrans('AaEeIiOoUu', 'ÀàÉéÍíÓóÚú')
 modified_text = poem_text.translate(modify)
