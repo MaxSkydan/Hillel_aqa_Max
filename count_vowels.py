@@ -1,20 +1,22 @@
 """
 Hometask 4 - Count vowels.
 
-# The English language has five vowels: A, E, I, O, and U
-# Please count each vowel occurrence in text bellow
-# (total sum of lower and capital cases)
-# and write output as table something like this
-#  -----------------
-#  | vowel | count |
-#  -----------------
-#  |   a   |  11   |
-#  |   e   |  23   |
-#    ...
-#  -----------------
-# then modify text where each vowel replaced with
-# A->À;  a->à ; E-> É ; e->é; I->Í , i->í ; O->Ó ; o->ó; U->Ú; u->ú
-# ex. "Í wàndéréd lónély..." and print it.
+The English language has five vowels: A, E, I, O, and U
+Please count each vowel occurrence in text bellow
+(total sum of lower and capital cases)
+and write output as table something like this
+
+# ------------------
+# | vowel |  count |
+# ------------------
+# |   a   |   11   |
+# |   e   |   23   |
+#  ...
+# ------------------
+
+then modify text where each vowel replaced with
+A->À;  a->à ; E-> É ; e->é; I->Í , i->í ; O->Ó ; o->ó; U->Ú; u->ú
+ex. "Í wàndéréd lónély..." and print it.
 """
 
 poem_text = """I wandered lonely as a cloud
@@ -32,14 +34,16 @@ Tossing their heads in sprightly dance.
 """
 
 """
-We change all text to lowercase
-and we count the vowels in the text and put them in the dictionary.
+We change all text to lowercase.
+After we count the vowels in the text and put them in the dictionary.
 And after that we display a table with the counted vowels.
 """
 
-vowels = {'A': poem_text.lower().count('a'), 'E': poem_text.lower().count('e'),
-          'I': poem_text.lower().count('i'), 'O': poem_text.lower().count('o'),
-          'U': poem_text.lower().count('u'),
+lower_text = poem_text.lower()
+
+vowels = {'A': lower_text.count('a'), 'E': lower_text.count('e'),
+          'I': lower_text.count('i'), 'O': lower_text.count('o'),
+          'U': lower_text.count('u'),
           }
 
 sep_num = 21
