@@ -15,7 +15,7 @@ import logging
 
 _log = logging.getLogger()
 console_handler = logging.StreamHandler()
-log_format = logging.Formatter('%(message)s')
+log_format = logging.Formatter('[%(asctime)s %(levelname)s]: %(message)s')
 console_handler.setFormatter(log_format)
 _log.addHandler(console_handler)
 _log.setLevel(logging.DEBUG)
