@@ -45,10 +45,14 @@ people_records.insert(0, ('Max', 'Sky', 31, 'Engineer', 'Kharkiv'))
 people_records[1], people_records[5] = people_records[5], people_records[1]
 _log.info(people_records)
 
+# Creating variables with the desired people indexes
 # Create variables with age using indexes
 # Then we check the age >=30 and print result
-age_1 = people_records[6][2]
-age_2 = people_records[10][2]
-age_3 = people_records[13][2]
-check = all((age_1, age_2, age_3 >= 30))
+COMPARE_INDEXES = (6, 10, 13)
+AGE_FIELD_INDEX = 2
+REQUIRED_AGE = 30
+age_1 = people_records[COMPARE_INDEXES[0]][AGE_FIELD_INDEX]
+age_2 = people_records[COMPARE_INDEXES[1]][AGE_FIELD_INDEX]
+age_3 = people_records[COMPARE_INDEXES[2]][AGE_FIELD_INDEX]
+check = all((age_1, age_2, age_3 >= REQUIRED_AGE))
 _log.info(check)
