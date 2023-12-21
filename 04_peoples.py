@@ -35,7 +35,6 @@ _log.setLevel(logging.DEBUG)
 sep_num = 21
 compare_indexes = (1, 4)
 
-
 people = [
     ('Alice', 32, 100, 'Johnson', 'female'),
     ('Bob', 41, 200, 'Smith', 'male'),
@@ -79,15 +78,14 @@ people = [
 ]
 
 # 1
-people.sort(key=itemgetter(compare_indexes[0], compare_indexes[1]))
+sort_people = sorted(people, key=itemgetter(compare_indexes[0], compare_indexes[1]))
 
 # 2
-sort_people = deque(people)
-deque.popleft(sort_people)
-deque.popleft(sort_people)
-deque.pop(sort_people)
-deque.pop(sort_people)
-_log.info(list(sort_people))
+sort_people.pop()
+sort_people.pop()
+sort_people.pop(0)
+sort_people.pop(0)
+_log.info(sort_people)
 
 # 3
 table_sort = list(itertools.chain.from_iterable(sort_people))
