@@ -23,13 +23,13 @@ text = 'is minimum value'
 min_num = min(w, x, y, z)
 
 # if_elif_else statement
-if min_num < x and min_num < w and min_num < z and min_num == y:
+if min_num == y and min_num != w and min_num != z and min_num != x:
     _log.info(f'"y" {text}')
-elif min_num < y and min_num < w and min_num < z and min_num == x:
+elif min_num == x and min_num != y and min_num != w and min_num != z:
     _log.info(f'"x" {text}')
-elif min_num < x and min_num < y and min_num < z and min_num == w:
+elif min_num == w and min_num != x and min_num != y and min_num != z:
     _log.info(f'"w" {text}')
-elif min_num < x and min_num < y and min_num < w and min_num == z:
+elif min_num == z and min_num != x and min_num != y and min_num != w:
     _log.info(f'"z" {text}')
 else:
     _log.info('We have a problem')
