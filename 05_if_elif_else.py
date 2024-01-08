@@ -18,10 +18,25 @@ console_handler.setFormatter(log_format)
 _log.addHandler(console_handler)
 _log.setLevel(logging.DEBUG)
 
-w, x, y, z = 100, 200, 40, 300
+w, x, y, z = 100, -200, 400, -300
 text = 'is minimum value'
-text_2 = 'are minimal and equal'
+text_2 = 'All values are minimal and equal'
 min_num = min(w, x, y, z)
+
+
+# fixed if_elif_else statement
+# but in this statement we can`t know which variables are equal
+if min_num == w and min_num == x and min_num == y and min_num == z:
+    _log.info(text_2)
+elif min_num == w and min_num <= x and min_num <= y and min_num <= z:
+    _log.info(f'"w" {text}')
+elif min_num == x and min_num <= w and min_num <= z and min_num <= y:
+    _log.info(f'"x" {text}')
+elif min_num == y and min_num <= w and min_num <= z and min_num <= x:
+    _log.info(f'"y" {text}')
+else:
+    _log.info(f'"z" {text}')
+
 
 # if_elif_else statement
 if min_num == w and min_num == x and min_num == y and min_num == z:
