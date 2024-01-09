@@ -18,7 +18,7 @@ console_handler.setFormatter(log_format)
 _log.addHandler(console_handler)
 _log.setLevel(logging.DEBUG)
 
-w, x, y, z = 100, -200, 400, -200
+w, x, y, z = 100, -300, 400, -300
 text = 'is minimum value'
 text_2 = 'are minimal and equal'
 min_num = min(w, x, y, z)
@@ -34,8 +34,11 @@ elif min_num == x and min_num <= w and min_num <= z and min_num <= y:
     _log.info(f'"x" {text}')
 elif min_num == y and min_num <= w and min_num <= z and min_num <= x:
     _log.info(f'"y" {text}')
-else:
+elif min_num == z and min_num <= w and min_num <= x and min_num <= y:
     _log.info(f'"z" {text}')
+else:
+    _log.info('We have a problem')
+
 
 
 # if_elif_else statement
