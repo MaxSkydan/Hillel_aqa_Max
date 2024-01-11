@@ -25,13 +25,13 @@ min_num = min(w, x, y, z)
 
 # if_elif_else statement without min variables
 if w <= x and w <= y and w <= z:
-    print("'w' is the minimum value")
+    _log.info("'w' is the minimum value")
 elif x <= w and x <= y and x <= z:
-    print("'x' is the minimum value")
+    _log.info("'x' is the minimum value")
 elif y <= w and y <= x and y <= z:
-    print("'y' is the minimum value")
+    _log.info("'y' is the minimum value")
 else:
-    print("'z' is the minimum value")
+    _log.info("'z' is the minimum value")
 
 # fixed if_elif_else statement
 # but in this statement we can`t know which variables are equal
