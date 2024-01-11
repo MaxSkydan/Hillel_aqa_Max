@@ -48,8 +48,6 @@ elif min_num == z and min_num <= w and min_num <= x and min_num <= y:
 else:
     _log.info('We have a problem')
 
-
-
 # if_elif_else statement
 if min_num == w and min_num == x and min_num == y and min_num == z:
     _log.info(f'All values {text_2}')
