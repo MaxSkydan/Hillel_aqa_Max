@@ -15,18 +15,17 @@ Output:
 
 num = 6
 
-#
+
 # def multi_table_map(x):
-#     """Функція яка створює таблицю множення."""
+#     """Creates a multiplication table by map."""
 #     for i in range(1, x + 1):
 #         print(*list(map(lambda x: i * x, list(range(1, x + 1)))))
 
 
 def multi_table_list(x):
-    """Функція яка створює таблицю множення."""
+    """Create a multiplication table by list comprehensions."""
     for i in range(1, x + 1):
         print(*[y * i for y in list(range(1, x + 1))], sep='  ')
 
 
-# multi_table_map(num)
 multi_table_list(num)
