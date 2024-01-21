@@ -12,20 +12,21 @@ Output:
 #  4   8  12  16  20
 #  5  10  15  20  25
 """
-
-num = 6
-
-
-# def multi_table_map(x):
-#     """Creates a multiplication table by map."""
+#
+#
+# # def multi_table_map(x):
+# #     """Creates a multiplication table by map."""
+# #     for i in range(1, x + 1):
+# #         print(*list(map(lambda x: i * x, list(range(1, x + 1)))))
+#
+#
+# def multi_table_list(x):
+#     """Create a multiplication table by list comprehensions."""
 #     for i in range(1, x + 1):
-#         print(*list(map(lambda x: i * x, list(range(1, x + 1)))))
+#         print(*[y * i for y in list(range(1, x + 1))], sep='  ')
 
 
-def multi_table_list(x):
-    """Create a multiplication table by list comprehensions."""
-    for i in range(1, x + 1):
-        print(*[y * i for y in list(range(1, x + 1))], sep='  ')
-
-
-multi_table_list(num)
+num = 5
+alignment = len(str(num**2))
+for i in range(1, num + 1):
+    print(' '.join(f'{x:{alignment}}' for x in range(i, i * num + 1, i)))
