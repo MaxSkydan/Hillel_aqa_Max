@@ -21,7 +21,7 @@ def magic_num(element):
     """Create a new list using a lambda for all symbol of list."""
     new_list = element.copy()
     for idx, el in enumerate(new_list):
-        if type(el) is not int and type(el) is not float:
+        if type(el) not in (int, float):
             func = new_list.pop(idx)
             output = [func(x) for x in new_list]
             return output
