@@ -12,6 +12,8 @@ Input: [9, 2, 3, lambda a: a / 2.0, 1, 0]
 Output: [4.5, 1, 1.5, 0.5, 0.0]
 """
 
+from types import LambdaType
+
 l1 = [lambda a: a + 2, 9, 3, 1, 0]
 l2 = [9, 2, 3, lambda a: a / 2.0, 1, 0]
 l3 = [lambda a: a + 2, 9.5, 3.7, 1.8, 0.2, 4.5]
@@ -21,10 +23,21 @@ def magic_num(element):
     """Create a new list using a lambda for all symbol of list."""
     new_list = element.copy()
     for idx, el in enumerate(new_list):
-        if type(el) not in (int, float):
+        if type(el) not in (int, float):  # Element whose type not int, float
             func = new_list.pop(idx)
-            output = [func(x) for x in new_list]
+            output = [func(el) for el in new_list]
+            return output
+
+
+def fixed_magic_num(element):
+    """Create a new list using a lambda for all symbol of list."""
+    new_list = element.copy()
+    for idx, el in enumerate(new_list):
+        if type(el) is LambdaType:    # Element whose type LambdaType
+            func_lambda = new_list.pop(idx)
+            output = [func_lambda(el) for el in new_list]
             return output
 
 
 print(magic_num(l2))
+print(fixed_magic_num(l2))
