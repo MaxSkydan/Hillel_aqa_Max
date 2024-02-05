@@ -25,12 +25,13 @@ do not forget about possible PRE- and POST- regexp searches
 
 import re
 
-text = (r'C:\Users\Максим\PycharmProjects'
-        r'\Hillel_aqa_Max\Hillel_aqa_Max\input.txt')
-pattern = r'[^A-Z][A-Z]{3}([a-z])[A-Z]{3}[^A-Z]'
+input_home_task_text = 'input.txt'
+match_pattern = r'(?<=[^A-Z][A-Z]{3})[a-z](?=[A-Z]{3}[^A-Z])'
+# pattern = r'[^A-Z][A-Z]{3}([a-z])[A-Z]{3}[^A-Z]'
 # pattern = r'(?<![A-Z])[A-Z]{3}([a-z])[A-Z]{3}(?![A-Z])'  PRE- and POST-
 
-with open(text, 'rt') as data_fh:
+
+with open(input_home_task_text, 'rt') as data_fh:
     data = data_fh.read()
-    sentence = ' '.join(re.findall(pattern, data))
+    sentence = ' '.join(re.findall(match_pattern, data))
     print(f'"Result" : "{sentence}"')
