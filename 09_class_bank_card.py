@@ -130,7 +130,7 @@ class Creditcard:
             self.__balance -= operation
             return self.balance
         else:
-            return False
+            raise ValueError('Not enough money')
 
     def check_balance(self, pin):
         """Check balance in credit card.
@@ -142,8 +142,7 @@ class Creditcard:
                       f'Your balance is {self.balance} UAH.')
             return self.balance
         else:
-            _log.debug("PIN isn't correct.")
-            return False
+            raise PermissionError('Wrong credentials')
 
     def put_money_to_card(self, card_num, cur_sum, usd=False):
         """Top up credit card balance.
@@ -163,8 +162,7 @@ class Creditcard:
                           f'{cur_sum} UAH was depositing from your card.')
             return True
         else:
-            _log.debug("Card number isn't correct.")
-            return False
+            raise KeyError("Card number isn't correct.")
 
     def buy_new_item(self, cvv, cur_sum, usd=False):
         """Reducing the balance on the card after purchasing an item.
@@ -182,8 +180,7 @@ class Creditcard:
                                   f'from your card.')
                         return True
                     else:
-                        _log.debug('Not enough money on the card.')
-                        return False
+                        raise ValueError
                 else:
                     if self.__expenses(cur_sum):
                         _log.info(f'Operation was successfully completed.\n'
@@ -191,14 +188,11 @@ class Creditcard:
                                   f'from your card.')
                         return True
                     else:
-                        _log.debug('Not enough money on the card.')
-                        return False
+                        raise ValueError
             else:
-                _log.info('Your card is expired.')
-                return False
+                raise AssertionError('Card is expired.')
         else:
-            _log.debug('Incorrect code.')
-            return False
+            raise PermissionError
 
 
 if __name__ == '__main__':
@@ -208,7 +202,7 @@ if __name__ == '__main__':
     console_handler = logging.StreamHandler()
     console_handler.setFormatter(log_formatter)
     _log.addHandler(console_handler)
-    _log.setLevel(logging.DEBUG)
+    _log.setLevel(logging.INFO)
 
     pin_code = 3344
     name = 'Max'
@@ -227,7 +221,10 @@ if __name__ == '__main__':
         params card: class instance.
         params pin: card pin code in integer format.
         """
-        return card.check_balance(pin)
+        try:
+            card.check_balance(pin)
+        except PermissionError as per_er:
+            _log.info(per_er)
 
     def change_pin_code(card, new_pin):
         """Change pin code for card.
@@ -249,7 +246,10 @@ if __name__ == '__main__':
         params card: class instance.
         params cur_sum: An integer representing the amount of money.
         """
-        return card.put_money_to_card(card.card_number, cur_sum)
+        try:
+            card.put_money_to_card(card.card_number, cur_sum)
+        except KeyError as key_er:
+            _log.info(key_er)
 
     def put_money_on_the_card_in_usd(card, cur_sum):
         """Put money on the card in usd.
@@ -260,7 +260,10 @@ if __name__ == '__main__':
         params card: class instance.
         params cur_sum: An integer representing the amount of money.
         """
-        return card.put_money_to_card(card.card_number, cur_sum, usd=True)
+        try:
+            card.put_money_to_card(card.card_number, cur_sum, usd=True)
+        except KeyError as key_er:
+            _log.info(key_er)
 
     def spend_money_online_in_uah(card, cur_sum):
         """Spend money in uah.
@@ -268,7 +271,14 @@ if __name__ == '__main__':
         params card: class instance.
         params cur_sum: An integer representing the amount of money.
         """
-        return card.buy_new_item(card.cvv_code, cur_sum)
+        try:
+            card.buy_new_item(card.cvv_code, cur_sum)
+        except ValueError as val_er:
+            _log.info(val_er)
+        except PermissionError as per_er:
+            _log.info(per_er)
+        except AssertionError as asser_er:
+            _log.info(asser_er)
 
     def spend_money_online_in_usd(card, cur_sum):
         """Spend money in usd.
@@ -279,7 +289,14 @@ if __name__ == '__main__':
         params card: class instance.
         params cur_sum: An integer representing the amount of money.
         """
-        return card.buy_new_item(card.cvv_code, cur_sum, usd=True)
+        try:
+            card.buy_new_item(card.cvv_code, cur_sum, usd=True)
+        except ValueError as val_er:
+            _log.info(val_er)
+        except PermissionError as per_er:
+            _log.info(per_er)
+        except AssertionError as asser_er:
+            _log.info(asser_er)
 
     my_card = Creditcard(pin_code, name, surname)
 
