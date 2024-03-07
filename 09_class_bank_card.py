@@ -20,14 +20,14 @@ _log = logging.getLogger()
 class Creditcard:
     """The class represent of Credit cards."""
 
-    BANK_ID = '4441'
     PIN_LENGTH = 4
     CVV_RANGE = (100, 999)
+    BANK_ID = '4441'
     BANK_NUMBER_RANGE = (100000000000, 999999999999)
     EXP_DATE_YEAR = 5
-    EXP_MONTH_DAY = 1
-    BALANCE = 0
-    USD_RATE = 40.1
+    START_EXP_MONTH_DAY = 1
+    OPENING_BALANCE = 0
+    USD_TO_UAH_RATE = 40.1
 
     def __init__(self, pin, client_name, client_surname):
         """Initialize an instance of the Credit card.
@@ -46,10 +46,10 @@ class Creditcard:
         self.__cvv = random.randint(*self.CVV_RANGE)
         self.__exp_date = datetime.date.today().replace(
             year=datetime.date.today().year + self.EXP_DATE_YEAR,
-            day=self.EXP_MONTH_DAY)
+            day=self.START_EXP_MONTH_DAY)
         self.__card_num = int(self.BANK_ID + str(random.randint(
             *self.BANK_NUMBER_RANGE)))
-        self.__balance = self.BALANCE
+        self.__balance = self.OPENING_BALANCE
 
     def __str__(self):
         """Human-readable string representation of the Credit card."""
@@ -66,7 +66,7 @@ class Creditcard:
     @classmethod
     def _usd_to_uah(cls, usd_value):
         """Convert USD to UAH."""
-        return usd_value * cls.USD_RATE
+        return usd_value * cls.USD_TO_UAH_RATE
 
     @staticmethod
     def validate_expired_card(end_date):
