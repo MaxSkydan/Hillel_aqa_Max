@@ -22,6 +22,12 @@ class Creditcard:
 
     BANK_ID = '4441'
     PIN_LENGTH = 4
+    CVV_RANGE = (100, 999)
+    BANK_NUMBER_RANGE = (100000000000, 999999999999)
+    EXP_DATE_YEAR = 5
+    DAY = 1
+    BALANCE = 0
+    USD_RATE = 40.1
 
     def __init__(self, pin, client_name, client_surname):
         """Initialize an instance of the Credit card.
@@ -37,12 +43,12 @@ class Creditcard:
         self.__pin = pin
         self.name = client_name
         self.surname = client_surname
-        self.__cvv = random.randint(100, 999)
+        self.__cvv = random.randint(*self.CVV_RANGE)
         self.__exp_date = datetime.date.today().replace(
-            year=datetime.date.today().year + 5, day=1)
-        self.__card_num = int(self.BANK_ID + str(random.randint(100000000000,
-                                                                999999999999)))
-        self.__balance = 0
+            year=datetime.date.today().year + self.EXP_DATE_YEAR, day=self.DAY)
+        self.__card_num = int(self.BANK_ID + str(random.randint(
+            *self.BANK_NUMBER_RANGE)))
+        self.__balance = self.BALANCE
 
     def __str__(self):
         """Human-readable string representation of the Credit card."""
@@ -56,11 +62,10 @@ class Creditcard:
         """Check the pin code have a length of 4 characters long."""
         return len(str(pin)) == cls.PIN_LENGTH
 
-    @staticmethod
-    def _usd_to_uah(usd_value):
+    @classmethod
+    def _usd_to_uah(cls, usd_value):
         """Convert USD to UAH."""
-        dollar_exchange_rate = 40.1
-        return usd_value * dollar_exchange_rate
+        return usd_value * cls.USD_RATE
 
     @staticmethod
     def validate_expired_card(end_date):
@@ -204,16 +209,8 @@ if __name__ == '__main__':
     _log.addHandler(console_handler)
     _log.setLevel(logging.INFO)
 
-    pin_code = 3344
-    name = 'Max'
-    surname = 'Skydan'
-
-    def show_basic_information_of_card(card):
-        """Show information about card.
-
-        params card: class instance.
-        """
-        return card
+    max_cred = (3344, 'Max', 'Skydan')
+    john_cred = (2112, 'John', 'Dou')
 
     def check_balance_of_card(card, pin):
         """Check balance on card.
@@ -298,15 +295,18 @@ if __name__ == '__main__':
         except AssertionError as asser_er:
             _log.info(asser_er)
 
-    my_card = Creditcard(pin_code, name, surname)
+    max_card = Creditcard(*max_cred)
+    john_card = Creditcard(*john_cred)
 
-    _log.info(show_basic_information_of_card(my_card))
-    check_balance_of_card(my_card, 3344)
-    change_pin_code(my_card, 33333)
-    change_pin_code(my_card, 3333)
-    spend_money_online_in_uah(my_card, 3)
-    put_money_on_the_card_in_uah(my_card, 10)
-    check_balance_of_card(my_card, 3333)
-    put_money_on_the_card_in_usd(my_card, 100)
-    spend_money_online_in_usd(my_card, 1)
-    check_balance_of_card(my_card, 333)
+    _log.info(max_card)
+    _log.info(john_card)
+    check_balance_of_card(max_card, 3344)
+    check_balance_of_card(john_card, 2112)
+    change_pin_code(max_card, 33333)
+    change_pin_code(max_card, 3333)
+    spend_money_online_in_uah(max_card, 3)
+    put_money_on_the_card_in_uah(max_card, 10)
+    check_balance_of_card(max_card, 3333)
+    put_money_on_the_card_in_usd(max_card, 100)
+    spend_money_online_in_usd(max_card, 1)
+    check_balance_of_card(max_card, 333)
