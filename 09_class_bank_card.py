@@ -25,7 +25,7 @@ class Creditcard:
     CVV_RANGE = (100, 999)
     BANK_NUMBER_RANGE = (100000000000, 999999999999)
     EXP_DATE_YEAR = 5
-    DAY = 1
+    EXP_MONTH_DAY = 1
     BALANCE = 0
     USD_RATE = 40.1
 
@@ -45,7 +45,8 @@ class Creditcard:
         self.surname = client_surname
         self.__cvv = random.randint(*self.CVV_RANGE)
         self.__exp_date = datetime.date.today().replace(
-            year=datetime.date.today().year + self.EXP_DATE_YEAR, day=self.DAY)
+            year=datetime.date.today().year + self.EXP_DATE_YEAR,
+            day=self.EXP_MONTH_DAY)
         self.__card_num = int(self.BANK_ID + str(random.randint(
             *self.BANK_NUMBER_RANGE)))
         self.__balance = self.BALANCE
