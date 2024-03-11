@@ -271,12 +271,8 @@ if __name__ == '__main__':
         """
         try:
             card.buy_new_item(card.cvv_code, cur_sum)
-        except ValueError as val_er:
-            _log.info(val_er)
-        except PermissionError as per_er:
-            _log.info(per_er)
-        except AssertionError as asser_er:
-            _log.info(asser_er)
+        except (ValueError, PermissionError, AssertionError) as g_er:
+            _log.info(g_er)
 
     def spend_money_online_in_usd(card, cur_sum):
         """Spend money in usd.
@@ -289,12 +285,8 @@ if __name__ == '__main__':
         """
         try:
             card.buy_new_item(card.cvv_code, cur_sum, usd=True)
-        except ValueError as val_er:
-            _log.info(val_er)
-        except PermissionError as per_er:
-            _log.info(per_er)
-        except AssertionError as asser_er:
-            _log.info(asser_er)
+        except (ValueError, PermissionError, AssertionError) as g_er:
+            _log.info(g_er)
 
     max_card = Creditcard(*max_cred)
     john_card = Creditcard(*john_cred)
