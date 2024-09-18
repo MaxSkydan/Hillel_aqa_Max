@@ -25,3 +25,9 @@
 	либо запускай с любой директории, но нужно точно указывать абсолютный путь
 	(C:/Users/Максим/PycharmProjects/Hillel_aqa_Max/venv/Scripts/flake8.exe /
 	c:/users/Максим/pycharmprojects/hillel_aqa_max/hillel_aqa_max/first_program.py)
+#Problem with venv and Packages
+    Возможно, PyCharm не видит путь к библиотекам виртуального окружения. Вы можете вручную указать путь:
+    Перейдите в File > Settings > Project: <ваш проект> > Project Structure.
+    Убедитесь, что папка с библиотеками виртуального окружения (например, venv/lib/python3.x/site-packages)
+    добавлена как Sources Root.
+    Если её нет, добавьте её вручную, нажав Add Content Root и указав путь к папке site-packages.
